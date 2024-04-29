@@ -11,6 +11,11 @@
             <div>{{ content.prompt }}</div>
             <input type="date" v-model="dateInput" class="date-input">
           </div>
+          <div v-else-if="index === 2" class="workshop-slide">
+            <h2>{{ content.title }}</h2>
+            <h3>{{ content.subtitle }}</h3>
+            <p>{{ content.description }}</p>
+          </div>
           <div v-else>
             {{ content }}
           </div>
@@ -49,7 +54,12 @@ export default defineComponent({
         slideContents: [
         { question: "What is the capital of Portugal?", answer: "Lisbon" },
         { prompt: "Enter a date:", type: "date" },
-        'Slide 3', 
+        {
+          type: 'workshop', 
+          title: 'Integration of Wind Farms into Electricity Grids Workshop', 
+          subtitle: 'by Vestas', 
+          description: 'This workshop will cover the representation of wind farms in simulation software, with an emphasis on wind turbine design and electrical performance for compliance with grid requirements.'
+        },
         'Slide 4'
         ]
     };
@@ -89,6 +99,39 @@ export default defineComponent({
   font-size: 32px;
   color: #e84396; 
   text-align: center;
+}
+
+.workshop-slide {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 16px;
+  background: #dbdbdb; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.workshop-slide h2 {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #8c8c8c;
+}
+
+.workshop-slide h3 {
+  font-weight: normal;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #8c8c8c;
+}
+
+.workshop-slide p {
+  font-size: 1rem;
+  color: #8c8c8c;
+  line-height: 1.5;
 }
 </style>
 
