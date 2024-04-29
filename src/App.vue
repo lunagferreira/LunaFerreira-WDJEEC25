@@ -1,32 +1,35 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-
-  <div id="app">
-  <CarouselComponent/>
-  </div>
+  <Carousel>
+    <Slide v-for="slide in 4" :key="slide">
+      <div class="carousel__item">JEEC</div>
+    </Slide>
+  </Carousel>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import CarouselComponent from './components/CarouselComponent.vue';
+import { defineComponent } from 'vue';
+import { Carousel, Slide } from 'vue3-carousel';
+import 'vue3-carousel/dist/carousel.css';
 
-export default {
-  name: 'App',
+export default defineComponent({
+  name: 'CarouselComponent',
   components: {
-    // HelloWorld
-    CarouselComponent
-  }
-}
+    Carousel,
+    Slide
+  },
+})
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.carousel__item {
+  height: 90vh; /* 90% of the viewport height */
+  width: 90%;
+  background-color: #955fa1;
+  color: white; /* Text color */
+  font-size: 40px;
+  border-radius: 20px; /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
