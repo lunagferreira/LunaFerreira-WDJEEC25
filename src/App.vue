@@ -6,6 +6,11 @@
           <div v-if="typeof content === 'object' && content.question">
             {{ content.question }}
           </div>
+          <!-- Check for date input type -->
+          <div v-else-if="typeof content === 'object' && content.type === 'date'">
+            <div>{{ content.prompt }}</div>
+            <input type="date" v-model="dateInput" class="date-input">
+          </div>
           <div v-else>
             {{ content }}
           </div>
@@ -19,9 +24,12 @@
     <div class="slide-answer" v-if="slideContents[slideIndex].answer">
       Answer: {{ slideContents[slideIndex].answer }}
     </div>
+    <!-- Display the date -->
+    <div v-if="dateInput && slideIndex === 1" class="date-display">
+      Selected date: {{ dateInput }}
+    </div>
   </div>
 </template>
-
 
 <script>
 import { defineComponent } from 'vue';
@@ -37,9 +45,10 @@ export default defineComponent({
     data() {
     return {
         slideIndex: 0,
+        dateInput: '',
         slideContents: [
         { question: "What is the capital of Portugal?", answer: "Lisbon" },
-        'Enter a date:', 
+        { prompt: "Enter a date:", type: "date" },
         'Slide 3', 
         'Slide 4'
         ]
@@ -60,11 +69,25 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 }
-  
+
+.date-input {
+  margin-top: 10px;
+  padding: 8px;
+  width: 70%;
+  font-size: 32px; 
+}
+
 .slide-answer {
   margin-top: 20px;
   font-size: 32px;
-  color: #c1701a; 
+  color: #e84396; 
+  text-align: center;
+}
+
+.date-display {
+  margin-top: 20px;
+  font-size: 32px;
+  color: #e84396; 
   text-align: center;
 }
 </style>
