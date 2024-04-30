@@ -76,18 +76,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* Styles specific to each carousel item */
 .carousel__item {
   height: 80vh; /* 80% of the viewport height */
-  width: 95%;
+  width: 90%;
   background-color: #008ADF;
   color: white; /* Text color */
   font-size: 40px;
   border-radius: 20px; /* Rounded corners */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Horizontally */
+  align-items: center; /* Vertically */
 }
 
+/* Styles for the date input inside the carousel */
 .date-input {
   margin-top: 10px;
   padding: 8px;
@@ -95,38 +97,34 @@ export default defineComponent({
   font-size: 32px; 
 }
 
-.slide-answer {
+/* Styles for displaying answers and date selections outside the carousel */
+.slide-answer, .date-display {
   margin-top: 20px;
   font-size: 32px;
   color: #e84396; 
   text-align: center;
 }
 
-.date-display {
-  margin-top: 20px;
-  font-size: 32px;
-  color: #e84396; 
-  text-align: center;
-}
-
+/* Specific styles for the workshop information slide */
 .workshop-slide {
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align children to the start of the cross axis */
+  justify-content: center; /* Center children along the main axis */
   padding: 1rem 3rem; /* 1rem top and bottom, 2rem left and right */
   border-radius: 32px;
   background: #E0DFDF; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
   width: 42%;
   box-sizing: border-box;
 }
 
+/* General styling for titles and paragraphs */
 .workshop-slide h2, .workshop-slide h3, .workshop-slide p {
   text-align: left; 
   width: 100%;
 }
 
+/* Title styles */
 .workshop-slide h2 {
   font-weight: bold;
   font-size: 2rem;
@@ -134,6 +132,7 @@ export default defineComponent({
   color: #898A8D;
 }
 
+/* Subtitle styles */
 .workshop-slide .workshop-workshop, .workshop-slide .workshop-by {
   font-weight: bold;
   font-size: 1.5rem;
@@ -142,9 +141,10 @@ export default defineComponent({
 }
 
 .workshop-slide .workshop-by {
-  margin-top: 0.5rem; 
+  margin-top: 0.5rem; /* Space above 'by Vestas' */
 }
 
+/* Description Styles */
 .workshop-slide p {
   font-size: 1.3rem;
   color: #898A8D;
@@ -152,8 +152,9 @@ export default defineComponent({
   margin-top: 2rem;
 }
 
+/* Image Styles */
 .image-slide img.responsive-image {
-  max-width: 60%;
+  max-width: 50%;
   height: auto; 
 }
 </style>
