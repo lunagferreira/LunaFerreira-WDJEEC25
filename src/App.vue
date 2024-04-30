@@ -13,8 +13,12 @@
           </div>
           <div v-else-if="index === 2" class="workshop-slide">
             <h2>{{ content.title }}</h2>
-            <h3>{{ content.subtitle }}</h3>
+            <h3 class="workshop-workshop">Workshop</h3>
+            <h3 class="workshop-by">by Vestas</h3>
             <p>{{ content.description }}</p>
+          </div>
+          <div v-else-if="index === 3" class="image-slide">
+            <img :src="content.src" :alt="content.alt" class="responsive-image" />
           </div>
           <div v-else>
             {{ content }}
@@ -56,11 +60,15 @@ export default defineComponent({
         { prompt: "Enter a date:", type: "date" },
         {
           type: 'workshop', 
-          title: 'Integration of Wind Farms into Electricity Grids Workshop', 
-          subtitle: 'by Vestas', 
+          title: 'Integration of Wind Farms into Electricity Grids', 
+          subtitle: 'Workshop by Vestas',  
           description: 'This workshop will cover the representation of wind farms in simulation software, with an emphasis on wind turbine design and electrical performance for compliance with grid requirements.'
         },
-        'Slide 4'
+        { 
+          type: 'image',
+          src: require('@/assets/challenge.png'),
+          alt: 'Description'
+        }
         ]
     };
     },
@@ -71,7 +79,7 @@ export default defineComponent({
 .carousel__item {
   height: 80vh; /* 80% of the viewport height */
   width: 95%;
-  background-color: #376099;
+  background-color: #008ADF;
   color: white; /* Text color */
   font-size: 40px;
   border-radius: 20px; /* Rounded corners */
@@ -105,33 +113,48 @@ export default defineComponent({
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 2rem;
-  border-radius: 16px;
-  background: #dbdbdb; 
+  padding: 1rem 3rem; /* 1rem top and bottom, 2rem left and right */
+  border-radius: 32px;
+  background: #E0DFDF; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
-  width: 50%;
+  width: 42%;
   box-sizing: border-box;
+}
+
+.workshop-slide h2, .workshop-slide h3, .workshop-slide p {
+  text-align: left; 
+  width: 100%;
 }
 
 .workshop-slide h2 {
   font-weight: bold;
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #8c8c8c;
+  color: #898A8D;
 }
 
-.workshop-slide h3 {
-  font-weight: normal;
+.workshop-slide .workshop-workshop, .workshop-slide .workshop-by {
+  font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #8c8c8c;
+  color: #898A8D;
+  margin: 0;
+}
+
+.workshop-slide .workshop-by {
+  margin-top: 0.5rem; 
 }
 
 .workshop-slide p {
-  font-size: 1rem;
-  color: #8c8c8c;
+  font-size: 1.3rem;
+  color: #898A8D;
   line-height: 1.5;
+  margin-top: 2rem;
+}
+
+.image-slide img.responsive-image {
+  max-width: 60%;
+  height: auto; 
 }
 </style>
 
