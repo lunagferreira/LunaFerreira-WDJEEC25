@@ -20,6 +20,17 @@
           <div v-else-if="index === 3" class="image-slide">
             <img :src="content.src" :alt="content.alt" class="responsive-image" />
           </div>
+          <div v-else-if="index === 4" class="flip-card" @click="isFlipped = !isFlipped">
+            <div class="flip-card-inner" :class="{ 'is-flipped': isFlipped }">
+              <div class="flip-card-front">
+                <img :src="content.src" :alt="content.alt" class="responsive-image" />
+              </div>
+              <div class="flip-card-back">
+                <!-- Back of the card -->
+                <p>Thank you!</p>
+              </div>
+            </div>
+          </div>
           <div v-else>
             {{ content }}
           </div>
@@ -68,6 +79,11 @@ export default defineComponent({
           type: 'image',
           src: require('@/assets/challenge.png'),
           alt: 'Description'
+        },
+        {
+          type: 'flip-image',
+          src: require('@/assets/front.png'),
+          alt: 'Flip Image'
         }
         ]
     };
@@ -81,7 +97,7 @@ export default defineComponent({
   height: 80vh; /* 80% of the viewport height */
   width: 90%;
   /* background-color: #008ADF; */
-  background-image: linear-gradient(to right, #009BDF, #0056B3); /* Blue gradient from lighter to darker */
+  background-image: linear-gradient(to right, #009BDF, #0056B3); 
   color: white; /* Text color */
   font-size: 40px;
   border-radius: 20px; /* Rounded corners */
@@ -119,7 +135,7 @@ export default defineComponent({
   border-radius: 32px;
   background: #E0DFDF; 
   font-family: 'Arial', sans-serif;
-  width: 42%;
+  width: 45%;
   box-sizing: border-box;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
 }
@@ -172,6 +188,61 @@ export default defineComponent({
 .image-slide img.responsive-image {
   max-width: 50%;
   height: auto; 
+}
+
+/* Flip card size */
+.flip-card {
+  width: 400px;  
+  height: 400px;  
+  perspective: 1000px;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.flip-card-front, .flip-card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+              0 0 10px 4px #ff5db9; /* Neon effect */
+}
+
+.flip-card-front img.responsive-image {
+  max-width: 100%; 
+  height: auto;  /* Maintain the aspect ratio of the image */
+  margin: auto;  /* Center the image within the card */
+}
+
+/* Flip effect */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front {
+  background-color: #008ADF;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-back {
+  background-image: linear-gradient(to right, #E0218D, #AF16A0); 
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
 }
 </style>
 
