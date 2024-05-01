@@ -80,13 +80,18 @@ export default defineComponent({
 .carousel__item {
   height: 80vh; /* 80% of the viewport height */
   width: 90%;
-  background-color: #008ADF;
+  /* background-color: #008ADF; */
+  background-image: linear-gradient(to right, #009BDF, #0056B3); /* Blue gradient from lighter to darker */
   color: white; /* Text color */
   font-size: 40px;
   border-radius: 20px; /* Rounded corners */
   display: flex;
   justify-content: center; /* Horizontally */
   align-items: center; /* Vertically */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+              0 0 10px 4px #58cbf1; /* Neon effect */
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 /* Styles for the date input inside the carousel */
@@ -116,6 +121,7 @@ export default defineComponent({
   font-family: 'Arial', sans-serif;
   width: 42%;
   box-sizing: border-box;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
 }
 
 /* General styling for titles and paragraphs */
@@ -150,6 +156,16 @@ export default defineComponent({
   color: #898A8D;
   line-height: 1.5;
   margin-top: 2rem;
+}
+
+/* Navigation and other interaction elements */
+.Navigation, .image-slide img {
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.Navigation:hover, .image-slide img:hover {
+  transform: scale(1.05); /* Slight scale to indicate interactivity */
 }
 
 /* Image Styles */
